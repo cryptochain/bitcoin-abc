@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+  bitcoin-abc-testnet:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: bitcoind -testnet
+    deploy:
+      endpoint_mode: vip
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: any
+        delay: 10s
+      placement:
+        constraints: [node.hostname == vm01]
+    # image: testing.wemic.io:5000/cryptochain/bitcoin-testnet
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100k"
+        max-file: "10"
+    ports:
+      - 18432:18332
+      - 18433:18333
+
