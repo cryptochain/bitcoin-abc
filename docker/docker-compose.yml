@@ -4,23 +4,18 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    command: bitcoind -testnet
-    deploy:
-      endpoint_mode: vip
-      mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: any
-        delay: 10s
-      placement:
-        constraints: [node.hostname == vm01]
-    # image: testing.wemic.io:5000/cryptochain/bitcoin-testnet
+    command: bitcoind -testnet -txindex=0 -listen=1 -server=1 -irc=1 -upnp=1 -port=20008 -rpcport=20009 -rpcuser=username -rpcpassword=password -printtoconsole=1
     logging:
       driver: "json-file"
       options:
         max-size: "100k"
         max-file: "10"
     ports:
-      - 18432:18332
-      - 18433:18333
+      - 20009:20009
+      - 20008:20008
+    restart: unless-stopped
+    volumes:
+      - bitcoin-abc-testnet:/home/bitcoin/.bitcoin
 
+volumes:
+  bitcoin-abc-testnet:
