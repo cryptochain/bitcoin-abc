@@ -4,7 +4,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    command: bitcoind -testnet -txindex=0 -listen=1 -server=1 -irc=1 -upnp=1 -port=20008 -rpcport=20009 -rpcuser=username -rpcpassword=password -printtoconsole=1
+    command: bitcoind -testnet -txindex=0 -listen=1 -server=1 -irc=1 -upnp=1 -port=20008 -rpcbind=0.0.0.0 -rpcallowip=127.0.0.1 -rpcallowip=172.0.0.0/8 -rpcallowip=212.70.175.0/32 -whitelist=172.0.0.0/8 -whitelist=212.70.175.0/32 -rpcport=20009 -rpcuser=username -rpcpassword=password -printtoconsole=1
     logging:
       driver: "json-file"
       options:
