@@ -5,7 +5,7 @@ LABEL maintainer="Anton Kulikov (anton.kulikov@tsrpay.com)"
 RUN set -ex \
   && apk --no-cache add su-exec
 
-ARG BITCOIN_ABC_VERSION=0.19.1
+ARG BITCOIN_ABC_VERSION=0.19.5
 ARG BITCOIN_ABC_DIR=bitcoin-abc-${BITCOIN_ABC_VERSION}
 ARG BITCOIN_ABC_DIST=bitcoin-abc-${BITCOIN_ABC_VERSION}-x86_64-linux-gnu.tar.gz
 ARG BITCOIN_ABC_SHA256=ffea0367af81fdc2f50e780938c6a1619aec1be125134777fff8a024b56923d1
@@ -28,7 +28,7 @@ RUN chmod +x /entrypoint.sh
 
 VOLUME ["/home/bitcoin/.bitcoin"]
 
-EXPOSE 8332 8333 18332 18333 18444
+EXPOSE 8332 8333 18332 18333 18444 20008 20009
 
 ENTRYPOINT ["/entrypoint.sh"]
 
