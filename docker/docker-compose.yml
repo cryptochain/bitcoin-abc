@@ -11,7 +11,7 @@ services:
         max-size: "100k"
         max-file: "10"
     ports:
-      - 20009:20009
+      - 20009:18333
       - 20008:20008
     restart: unless-stopped
     volumes:
