@@ -9,6 +9,8 @@ services:
       options:
         max-size: "100k"
         max-file: "10"
+    networks:
+      - crypto-p2p-services
     ports:
       - 20009:20009
       - 20008:20008
@@ -19,3 +21,7 @@ services:
 
 volumes:
   bitcoin-abc-testnet:
+
+networks:
+  crypto-p2p-services:
+    external: true
