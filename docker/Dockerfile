@@ -32,4 +32,4 @@ EXPOSE 8332 8333 18332 18333 18444 20008 20009
 
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["bitcoind"]
+CMD ["bitcoind", "-daemon"]
