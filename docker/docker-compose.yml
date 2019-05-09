@@ -4,7 +4,6 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    command: bitcoind -printtoconsole=1
     logging:
       driver: "json-file"
       options:
